@@ -1,10 +1,11 @@
 @import 'variables';
 
 // Pages
-@import 'pages/home';
+@import 'pages/feed';
 
 // Components
 @import 'components/post';
+@import 'components/post-overlay';
 
 
 html {

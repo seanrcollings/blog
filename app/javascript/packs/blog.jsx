@@ -8,13 +8,13 @@ import apiSetup from '../blog/apiSetup'
 import main from '../../assets/stylesheets/main.scss'
 
 // Components
-import Home from '../blog/home'
+import Feed from '../blog/feed'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
 		<Router history={history}>
       <Switch>
-        <Route path='/' exact component={Home}/>
+        <Route path='/' exact component={Feed}/>
       </Switch>
     </Router>,
     document.body.appendChild(document.createElement('div')),
