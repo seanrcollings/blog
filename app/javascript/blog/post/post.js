@@ -8,11 +8,9 @@ export default class Post extends Component {
     this.state = {
       class: 'post-preview'
     }
-
-    this.swapClass = this.swapClass.bind(this)
   }
 
-  swapClass () {
+  swapClass = () => {
     if (this.state.class === 'post-preview') {
       this.setState({ class: 'post-show' })
     } else {
@@ -22,7 +20,7 @@ export default class Post extends Component {
 
   render() {
     return (
-      <div onClick={this.swapClass} className={`post ${this.state.class}`}>
+      <div onClick={() => this.swapClass()} className={`post ${this.state.class}`}>
         <h2>{this.props.title}</h2>
         <h4>{this.props.subtitle}</h4>
         <p>{this.props.content}</p>
