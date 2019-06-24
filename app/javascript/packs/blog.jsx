@@ -5,6 +5,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 // Other
 import history from '../blog/history'
 import apiSetup from '../blog/apiSetup'
+import main from '../../assets/stylesheets/main.scss'
 
 // Components
 import Home from '../blog/home'

@@ -1,0 +1,25 @@
+@import 'variables';
+
+.post {
+  background-color: $foreground-blue;
+  border: 1px solid rgb(168, 167, 167);
+  border-radius: 4px;
+  margin: 15px;
+  padding: 15px;
+
+  &:hover {
+    background-color: $focus-blue;
+    cursor: pointer;
+  }
+
+  &-preview {
+
+  }
+
+  &-show {
+    width: 1000px;
+    position: absolute;
+    margin: auto;
+    
+  }
+}
