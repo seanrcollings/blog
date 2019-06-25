@@ -1,14 +1,21 @@
 @import 'variables';
 
-.post {
+.post-preview {
   background-color: $foreground-blue;
   border: 1px solid rgb(168, 167, 167);
   border-radius: 4px;
   margin: 15px;
   padding: 15px;
 
+  &-link {
+    text-decoration: none;
+    color: white;
+  }
+
   &:hover {
     background-color: $focus-blue;
     cursor: pointer;
   }
 }
+
+

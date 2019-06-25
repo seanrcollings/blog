@@ -1,10 +1,13 @@
 @import 'variables';
+@import 'layout/grid';
 
 // Pages
 @import 'pages/feed';
+@import 'pages/post';
 
 // Components
 @import 'components/post';
+@import 'components/profile';
 
 
 html {

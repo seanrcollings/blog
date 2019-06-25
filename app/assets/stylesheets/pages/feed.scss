@@ -1,9 +1,7 @@
 @import 'variables';
 
 .feed {
-  max-width: 750px;
-  min-width: 200px;
-  margin: auto;
   border: 1px solid red;
-  
+  width: 750px;
+  grid-column: content-s/content-e
 }

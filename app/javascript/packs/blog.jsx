@@ -8,13 +8,17 @@ import apiSetup from '../blog/apiSetup'
 import main from '../../assets/stylesheets/main.scss'
 
 // Components
-import Feed from '../blog/feed'
+import Feed from '../blog/feed/feed'
+import Post from '../blog/post/post'
+import NewPost from '../blog/post/newPost';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
 		<Router history={history}>
       <Switch>
         <Route path='/' exact component={Feed}/>
+        <Route path='/post/new' component={NewPost}/> 
+        <Route path='/post/:id' component={Post}/>
       </Switch>
     </Router>,
     document.body.appendChild(document.createElement('div')),
