@@ -8,7 +8,10 @@ export default class Post extends Component {
     this.state = {
       title: null,
       subtitle: null,
-      content: null
+      content: null,
+      id: null,
+      page: null,
+      editing: false
     }
   }
 
@@ -16,33 +19,116 @@ export default class Post extends Component {
   componentWillMount() {
     if(this.props.match !== undefined){
       axios.get(`/posts/${this.props.match.params.id}`).then(res => {
-        this.setState({...res.data})
+        this.setState({...res.data, page: true})
       })
     } else {
-      let {title, subtitle, content} = {...this.props} 
-      this.setState({ title, subtitle, content })
+      let {title, subtitle, content, id} = {...this.props} 
+      this.setState({ title, subtitle, content, id, page: false})
     }
   }
 
-  // Renderers
-  renderContent = () => {
-    const splitContent = this.state.content.split(/\r?\n/)
-    return splitContent.map((paragraph, index) => {
-      if (paragraph.length >= 1) {
-        return <p key={index}>{paragraph}</p>
+  deletePost = () => {
+    axios.delete(`/posts/${this.state.id}`)
+  }
+
+  editPost = event => {
+    event.preventDefault()
+    axios.put(`/posts/${this.state.id}`, { post: {
+      title: document.getElementById('title').value,
+      subtitle: document.getElementById('subtitle').value,
+      content: document.getElementById('content').value,
+    }})
+    .then(res => {
+      if(res.status === 200){ 
+        this.setState({ ...res.data})
+        this.swapMode()
       } else {
-        return <br key={index}/>
+        console.log('error')
       }
     })
   }
 
+  swapMode = () => {
+    if (this.state.editing) {
+      this.setState({ editing: false})
+    } else{
+      this.setState({ editing: true})
+    }
+  }
+
+  // Renderers
+  renderPost = () => {
+    if (this.state.editing){
+      return (
+        <div className='post'>
+          { this.renderAdminControls() }
+          <form className='post-edit'>
+            <input id='title' className='post-edit-input' type='text' name='title' placeholder='Post Title' defaultValue={this.state.title} required/><br/>
+            <input id='subtitle' className='post-edit-input' type='text' name='subtitle' placeholder='Post Subtitle' defaultValue={this.state.subtitle} required/><br/>
+            <textarea id='content' className='post-edit-content' type='text' name='content' placeholder='Blog Post' defaultValue={this.state.content} required/><br/>
+          </form>
+        </div>
+      )
+    }
+    else {
+      return (
+        <div className='post'>
+          { this.renderAdminControls() }
+          <h2>{this.state.title}</h2>
+          <h4>{this.state.subtitle}</h4>
+          { this.renderContent() }
+          { this.renderClosePost() }
+          <a href={`/post/${this.state.id}`}>Post</a>
+        </div>
+      )
+    }
+  }
+
+  renderContent = () => {
+    if (this.state.content !== null) {
+      const splitContent = this.state.content.split(/\r?\n/)
+      return splitContent.map((paragraph, index) => {
+        if (paragraph.length >= 1) {
+          return <p key={index}>{paragraph}</p>
+        } else {
+          return <br key={index}/>
+        }
+      })
+    }
+  }
+
+  renderClosePost = () => {
+    if(this.state.page) {
+      return <a className='post-close' href='/'>Close Post</a>
+    } else {
+      return <button className='post-close' onClick={() => this.props.changeContent('feed')}>Close Post</button>
+    }
+  }
+
+  renderAdminControls = () => {
+    let editButtons;
+    if(this.state.editing) {
+      editButtons = (
+        <span>
+          <button className='post-admin-button' onClick={this.editPost}>Save Edits</button>
+          <button className='post-admin-button' onClick={this.swapMode}>Discard Edits</button>
+        </span>
+      ) 
+    } else {
+      editButtons = <button className='post-admin-button' onClick={this.swapMode}>Edit Post</button>
+    }
+    return(
+      <div className='post-admin'>
+        { editButtons }
+        <button className='post-admin-button' onClick={this.deletePost}>Delete Post</button>
+      </div>
+    )
+  }
+
   render() {
     return (
-      <div className='post'>
-        <h2>{this.state.title}</h2>
-        <h4>{this.state.subtitle}</h4>
-        { this.renderContent() }
-        <a href='/'>Close Post</a>
+      <div className='post-grid'>
+        { this.renderPost() }
       </div>
     )
   }

@@ -15,7 +15,7 @@ export default class Home extends Component {
   changeContent = (component, data) => {
     switch(component) {
       case 'post':
-        this.setState({ content: <Post title={data.title} subtitle={data.subtitle} content={data.content}/> })
+        this.setState({ content: <Post {...data} changeContent={this.changeContent}/>  })
         break;
       case 'feed':
         this.setState ({content: <Feed changeContent={this.changeContent}/>})
@@ -29,7 +29,7 @@ export default class Home extends Component {
     return (
       <div className='home-grid'>
         <Profile/>
-        {this.state.content}
+          {this.state.content}
       </div>
     )
   }

@@ -1,4 +1,64 @@
+@import 'variables';
+
 .post {
-  background-color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $foreground-blue;
   grid-column: content-s/content-e;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(168, 167, 167);
+  width: 100%;
+
+  &-edit {
+    width: 100%;
+
+    &-input, &-content {
+      width: 80%;
+      margin: 10px 10px;
+      border-radius: 5px;
+      border: 1px solid white;
+      padding: 10px
+    }
+
+    &-input {
+      font-size: 20px;
+      width: 80.5%;
+    }
+
+    &-content {
+      font-size: 15px;
+      resize: none;
+      height: 400px;
+    }
+  }
+  
+
+  &-close {
+    align-self: end;
+    justify-self: flex-end;
+    background-color: $button-blue;
+    border: none;
+    font-family: $title-font;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-admin {
+    display: flex;
+    justify-content: flex-end;
+
+    &-button {
+      margin-left: 10px;
+      font-size: 20px;
+      border: none;
+    }
+  }
 }

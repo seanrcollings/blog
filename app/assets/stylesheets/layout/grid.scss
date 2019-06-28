@@ -10,6 +10,12 @@ body {
   min-width: 200px;
 }
 
+.post-grid {
+  display: flex;
+  max-width: 1000px;
+  min-width: 200px;
+}
+
 @media only screen and (max-width: 1040px) {
   .home-grid {
     display: flex;

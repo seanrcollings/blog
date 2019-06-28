@@ -20,16 +20,16 @@
 
   &-button {
     border: none;
-    background-color: rgb(46, 81, 196);
+    background-color: $button-blue;
     font-size: 30px;
     color: white;
     font-family: $title-font;
     transition: .3s all ease;
 
     &:hover {
-      background-color: rgb(49, 90, 224);
+      background-color: $button-blue-hover;
       cursor: pointer;
-      color: rgb(184, 184, 184);
+      
     }
   }
 }

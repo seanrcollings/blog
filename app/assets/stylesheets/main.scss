@@ -5,6 +5,7 @@
 @import 'pages/feed';
 @import 'pages/post';
 @import 'pages/post-new';
+@import 'pages/home';
 
 // Components
 @import 'components/post';
@@ -17,4 +18,18 @@ html {
   h1, h2, h3 { font-family: $title-font; margin: 5px; }
   h4, h5, h6 { font-family: $subtitle-font; margin: 5px; }
   p, div, span { font-family: $body-font; margin: 5px;}
+  a { text-decoration: none; }
+  
+  button { 
+    color: white; 
+    background-color: $button-blue; 
+    font-family: $title-font;
+    transition: .3s all ease;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $button-blue-hover;
+      color: rgb(184, 184, 184);
+    }
+  }
 }
