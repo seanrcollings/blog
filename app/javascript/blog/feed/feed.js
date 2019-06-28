@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
-import PostPreview from '../post/postPreview';
-import Profile from './profile';
-
+import PostPreview from '../post/postPreview'
   
 export default class Feed extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
+    this.state = { 
       posts: []
     }
   }
@@ -21,22 +19,20 @@ export default class Feed extends Component {
     })
   } 
 
+
   // Renderers
   renderPosts = () => {
     return this.state.posts.map(post => {
       return (
-        <PostPreview key={post.id} {...post}/>
+        <PostPreview key={post.id} {...post} changeContent={this.props.changeContent}/>
       )
     })
   }
 
   render() {
     return (
-      <div className='feed-grid'>
-        <Profile/>
-        <div className='feed'>
-          { this.renderPosts() }
-        </div>
+      <div className='feed'>
+        { this.renderPosts() }
       </div>
     )
   }

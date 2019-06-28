@@ -6,6 +6,7 @@ export default class NewPost extends Component {
   submit = (event) => {
     event.preventDefault()
     const data = new FormData(event.target)
+
     axios.post('/posts', {
       post: {
         title: data.get('title'),
@@ -20,11 +21,13 @@ export default class NewPost extends Component {
 
   render() {
     return (
-      <form onSubmit={this.submit} className='new-post'>
-        <input className='new-post-input' type='text' name='title' placeholder='Post Title' required/><br/>
-        <input className='new-post-input' type='text' name='subtitle' placeholder='Post Subtitle' required/><br/>
-        <textarea className='new-post-content' name='content' placeholder='Blog Post' required/><br/>
-        <input type='submit' className='new-post-button' value='Submit'/>
+      <form onSubmit={this.submit} className='post-new'>
+        <h2>Write up a new Blog Post here</h2>
+        <h4>Possibly add images and link functionality</h4>
+        <input className='post-new-input' type='text' name='title' placeholder='Post Title' required/><br/>
+        <input className='post-new-input' type='text' name='subtitle' placeholder='Post Subtitle' required/><br/>
+        <textarea className='post-new-content' type='text' name='content' placeholder='Blog Post' required/><br/>
+        <input type='submit' className='post-new-button' value='Submit'/>
       </form>
     )
   }

@@ -3,13 +3,14 @@ import React, { Component } from 'react'
 export default class PostPreview extends Component {
 
   render() {
-    console.log(this.props)
+    let {title, subtitle, content} = {...this.props}
+    const shortContent = content.split(/\r?\n/)[0] + '...'
     return (
       <div className='post-preview'>
-        <a className='post-preview-link' href={`/post/${this.props.id}`}>
-          <h2>{this.props.title}</h2>
-          <h4>{this.props.subtitle}</h4>
-          <p>{this.props.content}</p>
+        <a onClick={() => this.props.changeContent('post', {title, subtitle, content})} className='post-preview-link'>
+          <h2>{title}</h2>
+          <h4>{subtitle}</h4>
+          <p>{shortContent}</p>
         </a>
       </div>
     )

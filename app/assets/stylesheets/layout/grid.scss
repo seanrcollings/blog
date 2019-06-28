@@ -3,7 +3,7 @@ body {
   margin: auto;  
 }
 
-.feed-grid {
+.home-grid {
   display: grid;
   grid-template-columns: [s lefts-s] 250px [left-e content-s] 750px [content-e e];
   max-width: 1000px;
@@ -11,7 +11,7 @@ body {
 }
 
 @media only screen and (max-width: 1040px) {
-  .feed-grid {
+  .home-grid {
     display: flex;
   }
 }
