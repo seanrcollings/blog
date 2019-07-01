@@ -27,6 +27,7 @@ export default class Home extends Component {
   }
 
   render() {
+    console.log(gon.user)
     return (
       <div className='home-grid'>
         <div className='home-grid-nav'>

@@ -11,6 +11,8 @@ import main from '../../assets/stylesheets/main.scss'
 import Home from '../blog/home'
 import Post from '../blog/post/post'
 import NewPost from '../blog/post/newPost';
+import Login from '../blog/user/login';
+import SignUp from '../blog/user/signUp';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
@@ -19,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <Route path='/' exact component={Home}/>
         <Route path='/post/new' component={NewPost}/> 
         <Route path='/post/:id' component={Post}/>
+        <Route path='/login' component={Login}/>
+        <Route path='/signup' component={SignUp}/>
       </Switch>
     </Router>,
     document.body.appendChild(document.createElement('div')),

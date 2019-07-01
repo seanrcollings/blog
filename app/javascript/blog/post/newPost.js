@@ -11,7 +11,8 @@ export default class NewPost extends Component {
       post: {
         title: data.get('title'),
         subtitle: data.get('subtitle'),
-        content: data.get('content')
+        content: data.get('content'),
+        user_id: (gon.user.id)
       }
     })
     .then(res => {

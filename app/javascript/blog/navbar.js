@@ -5,11 +5,12 @@ export default class Navbar extends Component {
     return (
       <div className='navbar'>
         <div className='navbar-left'>
-          <a href='#' className='navbar-item'>Posts</a>
+          <a href='/' className='navbar-item'>Posts</a>
           <a href='#' className='navbar-item'>Authors</a>
         </div>
         <div className='navbar-right'>
-          <a href='#' className='navbar-item'>Log In</a>
+          {gon.user !== null ? <a href='/post/new' className='navbar-item'>Write Post</a> : ''}
+          {gon.user === null ? <a href='/login' className='navbar-item'>Log In</a> : <a href='/users/sign_out' className='navbar-item'>Log Out</a>}
         </div>
       </div>
     )

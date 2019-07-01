@@ -29,6 +29,9 @@ export default class Post extends Component {
 
   deletePost = () => {
     axios.delete(`/posts/${this.state.id}`)
+      .then(res => {
+        this.props.changeContent('feed')
+      })
   }
 
   editPost = event => {
@@ -106,23 +109,25 @@ export default class Post extends Component {
   }
 
   renderAdminControls = () => {
-    let editButtons;
-    if(this.state.editing) {
-      editButtons = (
+    if (gon.user.author){
+      let editButtons;
+      if(this.state.editing) {
+        editButtons = (
         <span>
           <button className='post-admin-button' onClick={this.editPost}>Save Edits</button>
           <button className='post-admin-button' onClick={this.swapMode}>Discard Edits</button>
         </span>
-      ) 
-    } else {
-      editButtons = <button className='post-admin-button' onClick={this.swapMode}>Edit Post</button>
+        ) 
+      } else {
+        editButtons = <button className='post-admin-button' onClick={this.swapMode}>Edit Post</button>
+      }
+      return(
+        <div className='post-admin'>
+          { editButtons }
+          <button className='post-admin-button' onClick={this.deletePost}>Delete Post</button>
+        </div>
+      )
     }
-    return(
-      <div className='post-admin'>
-        { editButtons }
-        <button className='post-admin-button' onClick={this.deletePost}>Delete Post</button>
-      </div>
-    )
   }
 
   render() {
