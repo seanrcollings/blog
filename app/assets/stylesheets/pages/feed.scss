@@ -3,5 +3,6 @@
 .feed {
   border: 1px solid red;
   width: 750px;
-  grid-column: content-s/content-e
+  grid-column: content-s/content-e;
+  grid-row: content-s/content-e;
 }

@@ -1,0 +1,26 @@
+@import '../variables';
+
+.navbar {
+  display: flex;
+  border-bottom: 1px solid rgb(175, 175, 175);
+  padding-bottom: 10px;
+
+  &-item {
+    font-family: $subtitle-font;
+    color: white;
+    width: 150px;
+    font-size: 20px;
+    padding: 0px 15px 15px 20px;
+    
+    &:hover {
+      cursor: pointer;
+      border-bottom: 1px solid rgb(74, 74, 255);
+    }
+  }
+  
+  &-left > &-item { margin-left: -5px; }
+
+  &-right { margin-left: auto;}
+  
+  &-right > &-item { margin-right: -5px; }
+}

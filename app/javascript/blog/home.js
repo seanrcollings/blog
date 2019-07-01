@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Feed from './feed/feed';
 import Profile from './feed/profile';
 import Post from './post/post';
+import Navbar from './navbar';
 
 export default class Home extends Component {
   constructor(props) {
@@ -28,8 +29,13 @@ export default class Home extends Component {
   render() {
     return (
       <div className='home-grid'>
-        <Profile/>
+        <div className='home-grid-nav'>
+          <Navbar/>
+        </div>
+        <div className='home-grid-content'>
+          <Profile/>
           {this.state.content}
+        </div>
       </div>
     )
   }

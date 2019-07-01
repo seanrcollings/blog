@@ -78,7 +78,7 @@ export default class Post extends Component {
           <h4>{this.state.subtitle}</h4>
           { this.renderContent() }
           { this.renderClosePost() }
-          <a href={`/post/${this.state.id}`}>Post</a>
+          <a className='post-link' href={`/post/${this.state.id}`}>Permanant Link</a>
         </div>
       )
     }

@@ -4,10 +4,14 @@ body {
 }
 
 .home-grid {
-  display: grid;
-  grid-template-columns: [s lefts-s] 250px [left-e content-s] 750px [content-e e];
-  max-width: 1000px;
-  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+
+  &-content { 
+    display: flex;
+    max-width: 1000px;
+    min-width: 100px;
+  }
 }
 
 .post-grid {
@@ -16,8 +20,11 @@ body {
   min-width: 200px;
 }
 
-@media only screen and (max-width: 1040px) {
+@media only screen and (max-width: 520px) {
   .home-grid {
-    display: flex;
+    &-content {
+      // flex-direction: column;
+      // width: 400px;
+    }
   }
 }

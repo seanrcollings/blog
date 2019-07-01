@@ -3,7 +3,7 @@ import React from 'react'
 export default function Profile() {
     return (
       <div className='profile'>
-        <img className='profile-img' src='/assets/seancollings.png'/>
+        <img className='profile-img' src='/assets/seanrcollingssmall.png'/>
         <h3 className='profile-name'>Sean Collings</h3>
         <a href='/post/new'>Make a New Post</a>
         <div className='profile-links'>
