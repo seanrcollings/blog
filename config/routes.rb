@@ -19,9 +19,11 @@ Rails.application.routes.draw do
     get '/all', to: 'authors#index'
     get '/:id', to: 'authors#show'
   end 
-    
+  
+  get '/user/:id/avatar', to: 'user#avatar_url'
   get '/post/:id', to: 'main#index'
   get '/login', to: 'main#index'
+  get '/signup', to: 'main#index'
   # get '*path', to: 'main#index'
 
 end

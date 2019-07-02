@@ -6,7 +6,9 @@ class AuthorsController < ApplicationController
 
   def show
     author = User.find(params[:id])
-    render json: author
+    # url = author.avatar.attached? ? url_for(author.avatar) : ""
+    url = url_for(author.avatar)
+    render json: {:author => author, :avatar => url}
   end
 
   def posts

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
-// Break this out into the page component and the in home page component, certainlhy would make them shorter
 export default class Post extends Component {
   constructor(props) {
     super(props)
@@ -102,6 +101,7 @@ export default class Post extends Component {
         <span>
           <button className='post-admin-button' onClick={this.editPost}>Save Edits</button>
           <button className='post-admin-button' onClick={this.swapMode}>Discard Edits</button>
+          <button className='post-admin-button' onClick={this.deletePost}>Delete Post</button>
         </span>
         ) 
       } else {
@@ -110,7 +110,6 @@ export default class Post extends Component {
       return(
         <div className='post-admin'>
           { editButtons }
-          <button className='post-admin-button' onClick={this.deletePost}>Delete Post</button>
         </div>
       )
     }

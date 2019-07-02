@@ -1,14 +1,25 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import ActiveStorageUploader from './activeStorage';
 
 export default class SignUp extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      avatarId: null
+    }
+  }
+
   submit = (e) => {
     e.preventDefault()
 
     axios.post('/users', {user: {
+      username: document.getElementById('username').value,
       email: document.getElementById('email').value,
       password: document.getElementById('password').value,
-      password_confirmation: document.getElementById('password_confirmation').value
+      password_confirmation: document.getElementById('password_confirmation').value,
+      avatar: this.state.avatarId
     }})
       .then(res => {
         console.log(res)
@@ -27,6 +38,10 @@ export default class SignUp extends Component {
             <input className='signUp-input' id="password" type='password' placeholder="Password"/>
             <input className='signUp-input' id="password_confirmation" type='password' placeholder="Retype Password"/>
           </div>
+          <ActiveStorageUploader 
+            text='Upload Avatar'
+            handleAttachment={(signedIds) => this.setState({avatarId: signedIds})}
+          />
           <input type='submit' className='post-new-button' value='Submit'/>
         </form>
       </div>

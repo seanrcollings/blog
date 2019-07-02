@@ -8,7 +8,8 @@ export default class Author extends Component {
 
     this.state = {
       author: {},
-      posts: []
+      posts: [],
+      avatar: ''
     }
   }
   
@@ -16,7 +17,7 @@ export default class Author extends Component {
   componentWillMount() {
     axios.get(`/authors/${this.props.match.params.id}`)
       .then(res => {
-        this.setState({author: res.data})
+        this.setState({author: res.data.author, avatar: res.data.avatar})
       })
   }
 
@@ -28,8 +29,10 @@ export default class Author extends Component {
   }
 
   render() {
+    console.log(this.state.avatar)
     return (
       <div className='author'>
+        <img src={this.state.avatar}/>
         <Feed posts={this.state.posts}/>
       </div>
     )
