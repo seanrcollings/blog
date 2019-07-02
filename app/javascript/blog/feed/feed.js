@@ -7,7 +7,7 @@ export default class Feed extends Component {
   renderPosts = () => {
     return this.props.posts.map(post => {
       return (
-        <PostPreview key={post.id} {...post} changeContent={this.props.changeContent}/>
+        <PostPreview key={post.id} {...post}/>
       )
     })
   }

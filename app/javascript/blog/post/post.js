@@ -11,21 +11,15 @@ export default class Post extends Component {
       subtitle: null,
       content: null,
       id: null,
-      page: null,
       editing: false
     }
   }
 
   // Helpers
   componentWillMount() {
-    if(this.props.match !== undefined){
-      axios.get(`/posts/${this.props.match.params.id}`).then(res => {
-        this.setState({...res.data, page: true})
-      })
-    } else {
-      // let {title, subtitle, content, id} = {...this.props} 
-      this.setState({ ...this.props, page: false})
-    }
+    axios.get(`/posts/${this.props.match.params.id}`).then(res => {
+      this.setState({...res.data})
+    })
   }
 
   deletePost = () => {
@@ -81,8 +75,7 @@ export default class Post extends Component {
           <h2>{this.state.title}</h2>
           <h4>{this.state.subtitle}</h4>
           { this.renderContent() }
-          { this.renderClosePost() }
-          <a className='post-link' href={`/post/${this.state.id}`}>Permanant Link</a>
+          <a className='post-close' href='/'>Close Post</a>
         </div>
       )
     }
@@ -98,14 +91,6 @@ export default class Post extends Component {
           return <br key={index}/>
         }
       })
-    }
-  }
-
-  renderClosePost = () => {
-    if(this.state.page) {
-      return <a className='post-close' href='/'>Close Post</a>
-    } else {
-      return <button className='post-close' onClick={() => this.props.changeContent('feed')}>Close Post</button>
     }
   }
 

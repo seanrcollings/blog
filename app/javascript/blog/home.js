@@ -10,9 +10,7 @@ export default class Home extends Component {
     super(props)
 
     this.state = {
-      posts: [], // For rendering the feed
-      post: {}, // For rendering a single post
-      content: 'feed' // Checking what is supposed to be rendered
+      posts: []
     }
   }
 
@@ -23,28 +21,12 @@ export default class Home extends Component {
     })
   } 
 
-  changeContent = (component, data) => {
-    this.setState({ content: component, post: data})
-  }
-
-  // Renderers
-  renderContent = () => {
-    switch(this.state.content) {
-      case 'post':
-        return  <Post {...this.state.post} changeContent={this.changeContent}/>
-      case 'feed':
-        return <Feed posts={this.state.posts} changeContent={this.changeContent}/>
-      default:
-        return <Feed posts={this.state.posts} changeContent={this.changeContent}/>
-    }
-  }
-
   render() {
     return (
       <div className='home-grid'>
         <div className='home-grid-content'>
           <Profile/>
-          { this.renderContent() }
+          <Feed posts={this.state.posts}/>
         </div>
       </div>
     )
