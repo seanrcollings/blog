@@ -1,41 +1,50 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
+
 import Feed from './feed/feed';
 import Profile from './feed/profile';
 import Post from './post/post';
-import Navbar from './navbar';
 
 export default class Home extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      content: <Feed changeContent={this.changeContent}/>
+      posts: [], // For rendering the feed
+      post: {}, // For rendering a single post
+      content: 'feed' // Checking what is supposed to be rendered
     }
   }
 
+  // Helpers
+  componentWillMount() {
+    axios.get('/posts').then(res => {
+      this.setState({ posts: res.data})
+    })
+  } 
+
   changeContent = (component, data) => {
-    switch(component) {
+    this.setState({ content: component, post: data})
+  }
+
+  // Renderers
+  renderContent = () => {
+    switch(this.state.content) {
       case 'post':
-        this.setState({ content: <Post {...data} changeContent={this.changeContent}/>  })
-        break;
+        return  <Post {...this.state.post} changeContent={this.changeContent}/>
       case 'feed':
-        this.setState ({content: <Feed changeContent={this.changeContent}/>})
-        break;
+        return <Feed posts={this.state.posts} changeContent={this.changeContent}/>
       default:
-        this.setState ({content: <Feed changeContent={this.changeContent}/>})
+        return <Feed posts={this.state.posts} changeContent={this.changeContent}/>
     }
   }
 
   render() {
-    console.log(gon.user)
     return (
       <div className='home-grid'>
-        <div className='home-grid-nav'>
-          <Navbar/>
-        </div>
         <div className='home-grid-content'>
           <Profile/>
-          {this.state.content}
+          { this.renderContent() }
         </div>
       </div>
     )

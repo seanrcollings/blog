@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
+// Break this out into the page component and the in home page component, certainlhy would make them shorter
 export default class Post extends Component {
   constructor(props) {
     super(props)
@@ -22,8 +23,8 @@ export default class Post extends Component {
         this.setState({...res.data, page: true})
       })
     } else {
-      let {title, subtitle, content, id} = {...this.props} 
-      this.setState({ title, subtitle, content, id, page: false})
+      // let {title, subtitle, content, id} = {...this.props} 
+      this.setState({ ...this.props, page: false})
     }
   }
 

@@ -6,7 +6,7 @@ export default class Navbar extends Component {
       <div className='navbar'>
         <div className='navbar-left'>
           <a href='/' className='navbar-item'>Posts</a>
-          <a href='#' className='navbar-item'>Authors</a>
+          <a href='/authors' className='navbar-item'>Authors</a>
         </div>
         <div className='navbar-right'>
           {gon.user !== null ? <a href='/post/new' className='navbar-item'>Write Post</a> : ''}

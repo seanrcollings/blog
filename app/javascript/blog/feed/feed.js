@@ -1,28 +1,11 @@
 import React, { Component } from 'react'
-import axios from 'axios';
-
 import PostPreview from '../post/postPreview'
   
-export default class Feed extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = { 
-      posts: []
-    }
-  }
-
-  // Helpers
-  componentWillMount() {
-    axios.get('/posts').then(res => {
-      this.setState({ posts: res.data})
-    })
-  } 
-
+export default class Feed extends Component { 
 
   // Renderers
   renderPosts = () => {
-    return this.state.posts.map(post => {
+    return this.props.posts.map(post => {
       return (
         <PostPreview key={post.id} {...post} changeContent={this.props.changeContent}/>
       )
