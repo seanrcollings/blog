@@ -9,7 +9,7 @@ export default class Navbar extends Component {
           <a href='/authors' className='navbar-item'>Authors</a>
         </div>
         <div className='navbar-right'>
-          {gon.user !== null ? <a href='/post/new' className='navbar-item'>Write Post</a> : ''}
+          {gon.user !== null && gon.user.author ? <a href='/post/new' className='navbar-item'>Write Post</a> : ''}
           {gon.user === null ? <a href='/login' className='navbar-item'>Log In</a> : <a href='/users/sign_out' className='navbar-item'>Log Out</a>}
         </div>
       </div>

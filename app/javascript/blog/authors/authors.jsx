@@ -20,8 +20,12 @@ export default class Authors extends Component {
 
   // Renderers
   renderAuthors = () => {
-    return this.state.authors.map((author, index) => {
-      return <a href={`/author/${author.id}`} key={index}>{author.email}</a>
+    return this.state.authors.map(author=> {
+      return (
+        <div key={author.id}>
+          <a href={`/author/${author.id}`}>{author.email}</a>
+        </div>
+      )
     })
   }
 

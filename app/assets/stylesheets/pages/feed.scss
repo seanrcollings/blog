@@ -1,8 +1,7 @@
 @import 'variables';
 
 .feed {
-  border: 1px solid red;
-  width: 750px;
-  grid-column: content-s/content-e;
-  grid-row: content-s/content-e;
+  border: 1px solid grey;
+  margin-top: 10px;
+  width: 1000px;
 }

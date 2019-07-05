@@ -6,6 +6,7 @@
 @import 'pages/post';
 @import 'pages/post-new';
 @import 'pages/home';
+@import 'pages/author';
 
 // Components
 @import 'components/post';
@@ -18,7 +19,7 @@ html {
   body { background-color: $background-blue; }
   h1, h2, h3 { font-family: $title-font; margin: 5px; }
   h4, h5, h6 { font-family: $subtitle-font; margin: 5px; }
-  p, div, span { font-family: $body-font; margin: 5px;}
+  p, div, span { font-family: $body-font }
   a { text-decoration: none; }
   
   button { 

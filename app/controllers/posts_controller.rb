@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   def index
-    posts = Post.order(created_at: :desc)
+    posts = []
+    Post.order(created_at: :desc).each do |post|
+      posts.push({author: post.user, post: post})
+    end
     render json: posts
   end
 

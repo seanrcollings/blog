@@ -1,11 +1,10 @@
 import React from 'react'
 
-export default function Profile() {
+export default function Profile(props) {
     return (
       <div className='profile'>
-        <img className='profile-img' src='/assets/seanrcollingssmall.png'/>
-        <h3 className='profile-name'>Sean Collings</h3>
-        {/* <a href='/post/new'>Make a New Post</a> */}
+        <img className='profile-img' src={props.avatar}/>
+        <h3 className='profile-name'>{props.author.username}</h3>
         <div className='profile-links'>
           <a href='https://github.com/seanrcollings'>GitHub</a> | 
           <a href='seanrcollings.zapto.org'>Pi Site</a> | 

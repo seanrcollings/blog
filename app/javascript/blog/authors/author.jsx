@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Feed from '../feed/feed';
+import Profile from '../feed/profile';
 
 export default class Author extends Component {
   constructor(props) {
@@ -29,11 +30,12 @@ export default class Author extends Component {
   }
 
   render() {
-    console.log(this.state.avatar)
     return (
       <div className='author'>
-        <img src={this.state.avatar}/>
-        <Feed posts={this.state.posts}/>
+        <div className='author-content'>
+          {/* <Profile author={this.state.author} avatar={this.state.avatar}/> */}
+          {/* <Feed posts={this.state.posts} author={this.state.author} avatar={this.state.avatar}/> */}
+        </div>
       </div>
     )
   }

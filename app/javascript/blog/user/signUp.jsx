@@ -13,14 +13,15 @@ export default class SignUp extends Component {
 
   submit = (e) => {
     e.preventDefault()
-
-    axios.post('/users', {user: {
-      username: document.getElementById('username').value,
-      email: document.getElementById('email').value,
-      password: document.getElementById('password').value,
-      password_confirmation: document.getElementById('password_confirmation').value,
-      avatar: this.state.avatarId
-    }})
+    axios.post('/users', {
+      user: {
+        username: document.getElementById('username').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+        password_confirmation: document.getElementById('password_confirmation').value,
+        avatar: this.state.avatarId
+      }
+    })
       .then(res => {
         console.log(res)
       })
@@ -40,7 +41,7 @@ export default class SignUp extends Component {
           </div>
           <ActiveStorageUploader 
             text='Upload Avatar'
-            handleAttachment={(signedIds) => this.setState({avatarId: signedIds})}
+            handleAttachement={(signedIds) => this.setState({avatarId: signedIds[0]})}
           />
           <input type='submit' className='post-new-button' value='Submit'/>
         </form>

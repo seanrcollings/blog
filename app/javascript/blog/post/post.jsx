@@ -94,7 +94,7 @@ export default class Post extends Component {
   }
 
   renderAdminControls = () => {
-    if (gon.user.author){
+    if (gon.user !== null && gon.user.author){
       let editButtons;
       if(this.state.editing) {
         editButtons = (

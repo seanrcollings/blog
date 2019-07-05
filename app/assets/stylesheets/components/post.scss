@@ -1,21 +1,66 @@
 @import 'variables';
 
 .post-preview {
-  background-color: $foreground-blue;
-  border: 1px solid rgb(168, 167, 167);
-  border-radius: 4px;
   margin: 15px;
-  padding: 15px;
-  transition: .3s background-color ease;
 
-  &-link {
-    color: white;
+  &-header {
+    display: flex;
+    flex-direction: column;
+
+    &-author {
+      display: flex;
+      color: white;
+      z-index: 100;
+      padding: 5px;
+      margin-left: 5px;
+      align-items: center;
+      transition: .3s all ease;
+      width: 50%;
+      overflow: hidden;
+
+      &-image {
+        width: 50px;
+        border-radius: 50%;
+        border: 3px solid white;
+        margin-right: 10px;
+      }
+
+      &-items {
+        display: flex;
+
+      }
+
+      &-item {
+        border-left: 1px solid white;
+        padding: 5px;
+        text-overflow: ellipsis;
+        font-family: $title-font;
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.479);
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+
   }
 
-  &:hover {
-    background-color: $focus-blue;
-    cursor: pointer;
+  &-text {
+    margin-left: 5px;
+    background-color: $foreground-blue;
+    border: 1px solid rgb(168, 167, 167);
+    border-radius: 4px;
+    padding: 15px;
+    transition: .3s background-color ease;
+    margin-top: 10px;
+    
+    &:hover {
+      background-color: $focus-blue;
+      cursor: pointer;
+    }
   }
+
 }
 
 
