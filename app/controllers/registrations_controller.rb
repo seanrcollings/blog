@@ -1,6 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
   def create
-    puts 'hello!'
     user = User.create(sign_up_params)
 
     if user.save

@@ -1,7 +1,6 @@
 @import 'variables';
 
 .post-preview {
-  margin: 15px;
 
   &-header {
     display: flex;
@@ -20,15 +19,13 @@
 
       &-image {
         width: 50px;
+        height: 50px;
         border-radius: 50%;
         border: 3px solid white;
         margin-right: 10px;
       }
 
-      &-items {
-        display: flex;
-
-      }
+      &-items { display: flex; }
 
       &-item {
         border-left: 1px solid white;
@@ -63,4 +60,8 @@
 
 }
 
+
+.post-container {
+  margin-bottom: 15px;
+}
 

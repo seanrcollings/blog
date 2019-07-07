@@ -11,7 +11,7 @@ class AuthorsController < ApplicationController
   end
 
   def posts
-    posts = User.find(params[:id]).posts
+    posts = User.find(params[:id]).posts.order(created_at: :desc)
     render json: posts
   end
 end

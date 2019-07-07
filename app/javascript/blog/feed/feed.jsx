@@ -1,21 +1,18 @@
 import React, { Component } from 'react'
 import PostsContainer from '../post/postsContainer'
   
-export default class Feed extends Component { 
+export default function Feed(props) { 
 
   // Renderers
-  renderPosts = () => {
-    console.log(this.props.authors)
-    return this.props.authors.map((author, index) => {
-      return <PostsContainer author={author} key={index}/> 
+  const renderPosts = () => {
+    return props.authors.map((author, index) => {
+      return <PostsContainer author={author} key={index} renderLink={props.renderLink}/> 
     })
   }
 
-  render() {
-    return (
-      <div className='feed'>
-        { this.renderPosts() }
-      </div>
-    )
-  }
+  return (
+    <div className='feed'>
+      { renderPosts() }
+    </div>
+  )
 }

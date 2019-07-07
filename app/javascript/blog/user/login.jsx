@@ -11,8 +11,9 @@ export default class Login extends Component {
       password: document.getElementById('password').value,
     }})
       .then(res => {
-        history.push('/')
-        location.reload()
+        // history.push('/')
+        // location.reload()
+        console.log(res)
       })
   }
 

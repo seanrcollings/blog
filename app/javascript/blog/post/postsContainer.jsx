@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import AuthorLink from '../post/authorLink'
+import AuthorLink from '../authors/authorLink'
 import PostPreview from './postPreview';
 
 export default class PostsContainer extends Component {
@@ -9,18 +9,19 @@ export default class PostsContainer extends Component {
     avatar: '/assets/default.png'
   }
 
-  componentWillMount() {
-    axios.get(`/authors/${this.props.author.id}/posts`)
+  async componentDidMount() {  
+    let posts, avatar;
+    await axios.get(`/authors/${this.props.author.id}/posts`)
       .then(res => {
-        this.setState({posts: res.data})
+        posts = res.data
       })
-  }
-
-  componentDidMount() {
-    axios.get(`/user/${this.props.author.id}/avatar`)
+    if (this.props.renderLink){
+      await axios.get(`/user/${this.props.author.id}/avatar`)
       .then(res => {
-        this.setState({avatar: res.data})
+        avatar = res.data
       })
+    }
+    this.setState({posts, avatar})
   }
 
   // Renderers
@@ -31,15 +32,17 @@ export default class PostsContainer extends Component {
   }
 
   render() {
-    return (
-      <div className='post-container'>
-        <div className='post-container-header'>
-          <AuthorLink author={this.props.author} avatar={this.state.avatar}/>
+    if (this.state.posts.length > 0) {
+      return (
+        <div className='post-container'>
+          <div className='post-container-header'>
+            { this.props.renderLink ? <AuthorLink author={this.props.author} avatar={this.state.avatar}/> : null }
+          </div>
+          <div className='post-container-content'>
+            { this.renderContent() }
+          </div>
         </div>
-        <div className='post-container-content'>
-          { this.renderContent() }
-        </div>
-      </div>
-    )
+      )
+    } else { return null }
   }
 }

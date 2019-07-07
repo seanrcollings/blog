@@ -7,14 +7,6 @@ export default function AuthorLink(props) {
     history.push(`/author/${props.author.id}`)
   }
   
-  // const formatDate = () => {
-  //   const date = new Date (props.createdAt)
-  //   const day = date.getDay() 
-  //   const month = date.getMonth()
-  //   const year = date.getYear()
-  //   return day + ' / ' + month //+ ' / ' + year
-  // }
-  
   const {email, username, id} = {...props.author}
   // const date = formatDate()
   return (

@@ -12,6 +12,8 @@
 @import 'components/post';
 @import 'components/profile';
 @import 'components/navbar';
+@import 'components/spinner';
+@import 'components/author-box.scss';
 
 
 html {
@@ -27,6 +29,7 @@ html {
     background-color: $button-blue; 
     font-family: $title-font;
     transition: .3s all ease;
+    border: none;
 
     &:hover {
       cursor: pointer;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import history from '../history'
 
 export default class NewPost extends Component {
 
@@ -16,7 +17,7 @@ export default class NewPost extends Component {
       }
     })
     .then(res => {
-      console.log(res.data)
+      history.push(`/post/${res.data.id}`)
     })
   }
 

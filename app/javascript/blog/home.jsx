@@ -2,27 +2,29 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import Feed from './feed/feed';
+import Spinner from './spinner';
 
 export default class Home extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      authors: []
+      authors: [],
+      loaded: false
     }
   }
 
   // Helpers
-  componentWillMount() {
-    axios.get('/authors/all').then(res => {
-      this.setState({ authors: res.data})
+  async componentDidMount() {
+    await axios.get('/authors/all').then(res => {
+      this.setState({ authors: res.data, loaded: true})
     })
   } 
 
   render() {
     return (
       <div className='home'>
-        <Feed authors={this.state.authors}/>
+        {this.state.loaded ? <Feed authors={this.state.authors} renderLink={true}/> : <Spinner/>}
       </div>
     )
   }

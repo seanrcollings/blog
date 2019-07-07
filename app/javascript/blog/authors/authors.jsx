@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import AuthorBox from './authorBox';
 
 export default class Authors extends Component {
   constructor(props) {
@@ -22,9 +23,7 @@ export default class Authors extends Component {
   renderAuthors = () => {
     return this.state.authors.map(author=> {
       return (
-        <div key={author.id}>
-          <a href={`/author/${author.id}`}>{author.email}</a>
-        </div>
+        <AuthorBox {...author} key={author.id}/>
       )
     })
   }

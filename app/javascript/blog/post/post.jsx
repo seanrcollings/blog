@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import history from '../history'
 
 export default class Post extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ export default class Post extends Component {
   deletePost = () => {
     axios.delete(`/posts/${this.state.id}`)
       .then(res => {
-        this.props.changeContent('feed')
+        history.push('/')
       })
   }
 
@@ -40,7 +41,7 @@ export default class Post extends Component {
         this.setState({ ...res.data})
         this.swapMode()
       } else {
-        console.log('error')
+        console.log(res)
       }
     })
   }
