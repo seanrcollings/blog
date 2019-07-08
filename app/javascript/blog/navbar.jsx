@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 export default class Navbar extends Component {
   render() {
-    console.log(gon.user)
     return (
       <div className='navbar'>
         <div className='navbar-left'>

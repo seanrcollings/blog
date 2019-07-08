@@ -8,6 +8,9 @@
 @import 'pages/post-new';
 @import 'pages/home';
 @import 'pages/author';
+@import 'pages/login';
+@import 'pages/sign-up';
+
 
 // Components
 @import 'components/post';
@@ -24,7 +27,13 @@ html {
   h1, h2, h3 { font-family: $title-font; margin: 5px; }
   h4, h5, h6 { font-family: $subtitle-font; margin: 5px; }
   p, div, span { font-family: $body-font }
-  a { text-decoration: none; }
+  a { 
+    text-decoration: none;
+    color: white;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   
   button { 
     color: white; 

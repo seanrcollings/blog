@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import AuthorBox from './authorBox';
+import Spinner from '../spinner';
 
 export default class Authors extends Component {
   constructor(props) {
@@ -29,10 +30,14 @@ export default class Authors extends Component {
   }
 
   render() {
-    return (
-      <div className='authors'>
-        { this.renderAuthors() }
-      </div>
-    )
+    if (this.state.authors.length > 0) {
+      return (
+        <div className='authors'>
+          { this.renderAuthors() }
+        </div>
+      )
+    } else {
+      return (<Spinner/>)
+    }
   }
 }

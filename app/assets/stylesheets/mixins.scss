@@ -1,1 +1,17 @@
 @import 'variables';
+
+@mixin auth-page {
+  width: 500px;
+  height: 300px;
+  margin: auto;
+  background-image: linear-gradient(rgb(54, 54, 138), rgb(34, 38, 94));
+  border-radius: 10px;
+
+  & > form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}

@@ -16,7 +16,9 @@ export default function AuthorBox(props) {
     history.push(`/author/${props.id}`)
   }
 
-  const border = props.id === gon.user.id ? '1px solid white' : null
+
+  let border
+  if (gon.user !== null) { border = props.id === gon.user.id ? '1px solid white' : null }
 
   return (
     <div className='author-box' style={{border: border}} onClick={openLink}>

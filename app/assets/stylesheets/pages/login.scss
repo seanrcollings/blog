@@ -1,0 +1,30 @@
+@import '../variables';
+@import '../mixins';
+
+.login {
+  @include auth-page;
+
+  &-input {
+    width: 350px;
+    border: 1px solid white;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  &-button {
+    color: white; 
+    background-color: $button-blue; 
+    font-family: $title-font;
+    transition: .3s all ease;
+    border: none !important;
+    font-size: 25px;
+    width: 150px !important;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $button-blue-hover;
+      color: rgb(184, 184, 184);
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import history from '../history'
+import Spinner from '../spinner';
 
 export default class Post extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export default class Post extends Component {
         this.setState({ ...res.data})
         this.swapMode()
       } else {
-        console.log(res)
+        window.alert('Something went wrong! ')
       }
     })
   }
@@ -69,15 +70,19 @@ export default class Post extends Component {
       )
     }
     else {
-      return (
-        <div className='post'>
-          { this.renderAdminControls() }
-          <h2>{this.state.title}</h2>
-          <h4>{this.state.subtitle}</h4>
-          { this.renderContent() }
-          <a className='post-close' href='/'>Close Post</a>
-        </div>
-      )
+      if (this.state.title !== null) {
+        return (
+          <div className='post'>
+            { this.renderAdminControls() }
+            <h2>{this.state.title}</h2>
+            <h4>{this.state.subtitle}</h4>
+            { this.renderContent() }
+            <a className='post-close' href='/'>Close Post</a>
+          </div>
+        )
+      } else {
+        return(<Spinner/>)
+      }
     }
   }
 

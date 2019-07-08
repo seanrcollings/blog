@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import history from '../history';
+
 import ActiveStorageUploader from './activeStorage';
 import AvatarModal from './avatarModal';
 
@@ -25,7 +27,10 @@ export default class SignUp extends Component {
       }
     })
       .then(res => {
-        console.log(res)
+        if (res.status === 200) {
+          history.push('/')
+          location.reload()
+        }
       })
   }
 
@@ -45,14 +50,14 @@ export default class SignUp extends Component {
             <input className='signUp-input' id="password" type='password' placeholder="Password"/>
             <input className='signUp-input' id="password_confirmation" type='password' placeholder="Retype Password"/>
           </div>
-          {/* <ActiveStorageUploader 
+          <ActiveStorageUploader 
             text='Upload Avatar'
             handleAttachement={(signedIds) => this.setState({avatarId: signedIds[0]})}
-          /> */}
-          <input type='file' onChange={this.handleChange}/>
-          <input type='submit' className='post-new-button' value='Submit'/>
+          />
+          {/* <input type='file' onChange={this.handleChange}/> */}
+          <input type='submit' className='signUp-button' value='Submit'/>
         </form>
-        <AvatarModal avatar={this.state.avatar}/>
+        {/* <AvatarModal avatar={this.state.avatar}/> */}
       </div>
     )
   }

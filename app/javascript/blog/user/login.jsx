@@ -11,20 +11,31 @@ export default class Login extends Component {
       password: document.getElementById('password').value,
     }})
       .then(res => {
-        // history.push('/')
-        // location.reload()
-        console.log(res)
+        if (res.status === 200){
+          history.push('/')
+          location.reload()
+        } else {
+          window.alert('Something went wrong')
+        }
       })
   }
 
+  checkLoggedIn = () => {
+    if (gon.user !== null) {
+      history.push('/')
+    }
+  }
+
   render() {
+    this.checkLoggedIn()
     return (
       <div className='login'>
         <form className='login-form' onSubmit={this.submit}>
-          <input id='email' className='login-input' type="text" name="email" placeholder='Email'/><br/>
-          <input id='password' className='login-input' type="password" name="password" placeholder='Password'/><br/>
-          <input type='submit' className='post-new-button' value='Submit'/>
+          <input id='email' className='login-input' type="text" name="email" placeholder='Email'/>
+          <input id='password' className='login-input' type="password" name="password" placeholder='Password'/>
+          <input type='submit' className='login-button' value='Submit'/>
         </form>
+        <p> <a href='/signup'> Don't have an account? Sign Up Here!</a></p>
       </div>
     )
   }

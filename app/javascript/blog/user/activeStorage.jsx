@@ -9,7 +9,7 @@ export default class ActiveStorageUploader extends Component {
         render={({ handleUpload, uploads, ready }) => (
             <div className='signUp-file file-wrapper'>
               <div className='signUp-file file'>
-                <input
+                Avatar: <input
                   type="file"
                   disabled={!ready}
                   onChange={e => handleUpload(e.currentTarget.files)}
