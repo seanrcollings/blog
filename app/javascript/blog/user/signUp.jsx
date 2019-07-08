@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import ActiveStorageUploader from './activeStorage';
+import AvatarModal from './avatarModal';
 
 export default class SignUp extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      avatarId: null
+      avatarId: null,
+      avatar: null
     }
   }
 
@@ -27,6 +29,10 @@ export default class SignUp extends Component {
       })
   }
 
+  handleChange = (event) => {
+    this.setState({ avatar: URL.createObjectURL(event.target.files[0]) })
+  }
+
   render() {
     return (
       <div className='signUp'>
@@ -39,12 +45,14 @@ export default class SignUp extends Component {
             <input className='signUp-input' id="password" type='password' placeholder="Password"/>
             <input className='signUp-input' id="password_confirmation" type='password' placeholder="Retype Password"/>
           </div>
-          <ActiveStorageUploader 
+          {/* <ActiveStorageUploader 
             text='Upload Avatar'
             handleAttachement={(signedIds) => this.setState({avatarId: signedIds[0]})}
-          />
+          /> */}
+          <input type='file' onChange={this.handleChange}/>
           <input type='submit' className='post-new-button' value='Submit'/>
         </form>
+        <AvatarModal avatar={this.state.avatar}/>
       </div>
     )
   }

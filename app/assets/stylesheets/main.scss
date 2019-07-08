@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'layout/grid';
+@import '../../../node_modules/react-image-crop/lib/ReactCrop.scss';
 
 // Pages
 @import 'pages/feed';
@@ -13,7 +14,8 @@
 @import 'components/profile';
 @import 'components/navbar';
 @import 'components/spinner';
-@import 'components/author-box.scss';
+@import 'components/author-box';
+@import 'components/avatar-modal';
 
 
 html {

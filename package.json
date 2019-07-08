@@ -11,6 +11,7 @@
     "react": "^16.8.6",
     "react-activestorage-provider": "^0.8.0",
     "react-dom": "^16.8.6",
+    "react-image-crop": "^8.1.0",
     "react-router-dom": "^5.0.1",
     "reactn": "^2.1.4"
   },
