@@ -1,11 +1,22 @@
 import React, { Component } from 'react'
+import axios from 'axios';
+
 import Comment from './comment';
 import MakeComment from './makeComment';
 
 export default class Thread extends Component {
-  
+  state = { comments: [] }
+
+  // Helpers
+  componentWillMount() {
+    axios.get(`/posts/${this.props.id}/comments`).then(res => {
+      this.setState({ comments: res.data})
+    })
+  }
+
+  // Renderers
   renderComments = () => {
-    return this.props.comments.map((comment, index) => {
+    return this.state.comments.map((comment, index) => {
       return <Comment {...comment} key={index} postId={this.props.id}/>
     })
   }

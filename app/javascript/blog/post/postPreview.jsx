@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import history from '../history'
+import formatDate from './formatDate';
 
 export default class PostPreview extends Component {
   
@@ -17,12 +18,16 @@ export default class PostPreview extends Component {
   }
 
   render() {
+    
     const { title, subtitle } = { ...this.props }
     const shortContent = this.getShortContent()
     return (
       <div className='post-preview'>
         <div className='post-preview-text' onClick={this.openPost}>
-          <h2>{title}</h2>  
+          <div className='post-preview-header'>
+            <h2>{title}</h2>
+            <div className='post-preview-header-date'>{formatDate(this.props.created_at)}</div>
+          </div>  
           <h4>{subtitle}</h4>
           <p>{shortContent}</p>
         </div>

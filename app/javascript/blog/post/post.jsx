@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import history from '../history'
 import Spinner from '../spinner';
-import Thread from './thread';
+import PostExtras from './postExtras';
+import AuthorLink from '../authors/authorLink';
 
 export default class Post extends Component {
   constructor(props) {
@@ -13,21 +14,24 @@ export default class Post extends Component {
       subtitle: null,
       content: null,
       id: null,
+      user_id: null,
+      authorData: {},
       comments: [],
-      editing: false
+      editing: false,
+      extra: 'thread'
     }
   }
 
   // Helpers
   componentWillMount() {
     axios.get(`/posts/${this.props.match.params.id}`).then(res => {
-      this.setState({...res.data})
+      this.setState({...res.data}, () => {this.fetchUser()})
     })
   }
 
-  componentDidMount() {
-    axios.get(`/posts/${this.props.match.params.id}/comments`).then(res => {
-      this.setState({ comments: res.data})
+  fetchUser() {
+    axios.get(`/authors/${this.state.user_id}`).then(res => {
+      this.setState({authorData: res.data})
     })
   }
 
@@ -63,6 +67,10 @@ export default class Post extends Component {
     }
   }
 
+  handleScroll = () => {
+    console.log('hi')
+  }
+
   // Renderers
   renderPost = () => {
     if (this.state.editing){
@@ -82,11 +90,14 @@ export default class Post extends Component {
         return (
           <div className='post'>
             { this.renderAdminControls() }
+            <div className='post-author'>
+              <AuthorLink author={this.state.authorData.author} avatar={this.state.authorData.avatar} className={'post-author-link'}/>
+            </div>
             <h2>{this.state.title}</h2>
             <h4>{this.state.subtitle}</h4>
             { this.renderContent() }
             <a className='post-close' href='/'>Close Post</a>
-            <Thread comments={this.state.comments} id={this.state.id}/>
+            <PostExtras extra={this.state.extra} comments={this.state.comments} id={this.state.id}/>
           </div>
         )
       } else {

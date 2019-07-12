@@ -19,11 +19,10 @@ export default class MakeComment extends Component {
   }
   
   render() {
-    console.log(this.props);
     return (
       <form className='make-comment' onSubmit={this.submit}>
         <textarea className='make-comment-content' name='content' placeholder={this.props.reply ? `Reply to ${this.props.parentCommentUser}` : 'Leave a Comment'} required/>
-        <input type='submit' className='make-comment-button' value='Comment'/>
+        {gon.user !== null ? <input type='submit' className='make-comment-button' value='Comment'/> : 'You must be logged in to leave a comment'}
       </form>
     )
   }

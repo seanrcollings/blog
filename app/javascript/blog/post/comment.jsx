@@ -3,7 +3,7 @@ import AnimateHeight from 'react-animate-height';
 import axios from 'axios';
 
 import UseComment from './useComment';
-import Spinner from '../spinner'
+
 
 export default class Comment extends Component {
   state = {

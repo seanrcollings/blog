@@ -56,6 +56,11 @@
     }
   }
 
+  &-author {
+    margin: 10px 0px;
+    margin-left: -5px;
+  }
+
   &-admin {
     display: flex;
     justify-content: flex-end;
@@ -64,6 +69,25 @@
       margin-left: 10px;
       font-size: 20px;
       border: none;
+    }
+  }
+
+  &-extras {
+    
+    &-header {
+      display: flex;
+      margin: 20px 0px;
+      border-bottom: 1px solid grey;
+
+      &-item {
+        color: grey;
+        padding: 10px 5px;
+
+        &:hover {
+          color: white;
+          cursor: pointer;
+        }
+      }
     }
   }
 }
