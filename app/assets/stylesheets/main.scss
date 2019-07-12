@@ -5,27 +5,29 @@
 // Pages
 @import 'pages/feed';
 @import 'pages/post';
-@import 'pages/post-new';
 @import 'pages/home';
-@import 'pages/author';
 @import 'pages/login';
+@import 'pages/author';
 @import 'pages/sign-up';
+@import 'pages/post-new';
 
 
 // Components
 @import 'components/post';
-@import 'components/profile';
 @import 'components/navbar';
 @import 'components/spinner';
+@import 'components/profile';
+@import 'components/comments';
 @import 'components/author-box';
+@import 'components/make-comment';
 @import 'components/avatar-modal';
 
 
 html {
   color: white;
   body { background-color: $background-blue; }
-  h1, h2, h3 { font-family: $title-font; margin: 5px; }
-  h4, h5, h6 { font-family: $subtitle-font; margin: 5px; }
+  h1, h2, h3 { font-family: $title-font; margin: 0px; }
+  h4, h5, h6 { font-family: $subtitle-font; margin: 0px; }
   p, div, span { font-family: $body-font }
   a { 
     text-decoration: none;
@@ -47,5 +49,9 @@ html {
       background-color: $button-blue-hover;
       color: rgb(184, 184, 184);
     }
+  }
+
+  textarea {
+    resize: none;
   }
 }

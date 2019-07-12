@@ -1,0 +1,39 @@
+@import '../variables';
+
+.make-comment {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  
+  h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  &-content {
+    height: 50px;
+    border: 1px solid grey;
+    background-color: transparent;
+    color: white;
+    font-family: $body-font
+  }
+
+  &-button {
+    width: 100px;
+    font-size: 17px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: auto;
+    border: none;
+    background-color: $button-blue;
+    color: white;
+    font-family: $title-font;
+    transition: .3s all ease;
+
+    &:hover {
+      background-color: $button-blue-hover;
+      cursor: pointer;
+      
+    }
+  }
+}

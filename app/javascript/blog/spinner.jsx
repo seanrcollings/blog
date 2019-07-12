@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Spinner() {
+export default function Spinner(props) {
   return (
-    <div className="spinner"></div>
+    <div className={`spinner ${props.className}`}></div>
   )
 }

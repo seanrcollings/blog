@@ -11,6 +11,11 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     render json: post
   end
+
+  def show_comments
+    comments = Comment.all.where(post_id: params[:id], parent_comment_id: nil).order(created_at: :desc)
+    render json: comments
+  end
   
   def create
     if current_user.author?

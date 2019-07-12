@@ -16,14 +16,6 @@ export default class PostPreview extends Component {
     history.push(`/post/${this.props.id}`)
   }
 
-  // const formatDate = () => {
-  //   const date = new Date (props.createdAt)
-  //   const day = date.getDay() 
-  //   const month = date.getMonth()
-  //   const year = date.getYear()
-  //   return day + ' / ' + month //+ ' / ' + year
-  // }
-
   render() {
     const { title, subtitle } = { ...this.props }
     const shortContent = this.getShortContent()

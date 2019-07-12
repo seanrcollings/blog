@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import history from '../history'
 import Spinner from '../spinner';
+import Thread from './thread';
 
 export default class Post extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ export default class Post extends Component {
       subtitle: null,
       content: null,
       id: null,
+      comments: [],
       editing: false
     }
   }
@@ -20,6 +22,12 @@ export default class Post extends Component {
   componentWillMount() {
     axios.get(`/posts/${this.props.match.params.id}`).then(res => {
       this.setState({...res.data})
+    })
+  }
+
+  componentDidMount() {
+    axios.get(`/posts/${this.props.match.params.id}/comments`).then(res => {
+      this.setState({ comments: res.data})
     })
   }
 
@@ -78,6 +86,7 @@ export default class Post extends Component {
             <h4>{this.state.subtitle}</h4>
             { this.renderContent() }
             <a className='post-close' href='/'>Close Post</a>
+            <Thread comments={this.state.comments} id={this.state.id}/>
           </div>
         )
       } else {

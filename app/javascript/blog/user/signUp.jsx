@@ -28,7 +28,7 @@ export default class SignUp extends Component {
     })
       .then(res => {
         if (res.status === 200) {
-          history.push('/')
+          history.push('/login')
           location.reload()
         }
       })

@@ -1,0 +1,67 @@
+.comment {
+  margin-top: 20px;
+  border-bottom: 1px solid grey;
+  padding-bottom: 20px;
+
+  &-user {
+    display: flex;
+    align-items: center;
+
+    &-img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+
+      &-container {
+        width: 40px;
+        height: 40px;
+        border: 2px solid white;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+    }
+
+    &-name {
+      margin: 0px 10px;
+    }
+  }
+
+  &-timestamp {
+    margin-top: 4px;
+    font-size: 10px;
+    color: grey;
+  }
+
+  &-content {
+    display: flex;
+    margin-bottom: 5px;
+  }
+
+  &-replies {
+    padding-left: 30px;
+    border-left: 1px solid grey;
+    margin: 10px;
+    &-show {
+    }
+  }
+
+  &-action {
+    font-size: 13px;
+    display: inline;
+    margin-right: 10px;
+      &:hover {
+        cursor: pointer;
+        color: grey;
+      }
+  }
+
+  &-spinner {
+    position: relative;
+    bottom: 0;
+    left: 0;
+  }
+
+  &-reply {
+    margin-bottom: 15px;
+  }
+}
