@@ -11,7 +11,7 @@ export default class PostsContainer extends Component {
 
   async componentDidMount() {  
     let posts, avatar;
-    await axios.get(`/authors/${this.props.author.id}/posts`)
+    await axios.get(`/api/authors/${this.props.author.id}/posts`)
       .then(res => {
         posts = res.data
       })

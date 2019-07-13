@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
 import Thread from './thread';
+import OtherPosts from './otherPosts';
 
 export default function PostExtras(props) {
   const [extra, setExtra] = useState('posts')
@@ -13,7 +14,7 @@ export default function PostExtras(props) {
         content = <Thread id={props.id}/>
         break;
       case 'posts':
-        content = 'Posts'
+        content = <OtherPosts/>
         break; 
       default:
         content = 'default'

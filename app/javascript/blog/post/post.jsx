@@ -24,19 +24,19 @@ export default class Post extends Component {
 
   // Helpers
   componentWillMount() {
-    axios.get(`/posts/${this.props.match.params.id}`).then(res => {
+    axios.get(`/api/posts/${this.props.match.params.id}`).then(res => {
       this.setState({...res.data}, () => {this.fetchUser()})
     })
   }
 
   fetchUser() {
-    axios.get(`/authors/${this.state.user_id}`).then(res => {
+    axios.get(`/api/authors/${this.state.user_id}`).then(res => {
       this.setState({authorData: res.data})
     })
   }
 
   deletePost = () => {
-    axios.delete(`/posts/${this.state.id}`)
+    axios.delete(`/api/posts/${this.state.id}`)
       .then(res => {
         history.push('/')
       })
@@ -44,7 +44,7 @@ export default class Post extends Component {
 
   editPost = event => {
     event.preventDefault()
-    axios.put(`/posts/${this.state.id}`, { post: {
+    axios.put(`/api/posts/${this.state.id}`, { post: {
       title: document.getElementById('title').value,
       subtitle: document.getElementById('subtitle').value,
       content: document.getElementById('content').value,

@@ -9,7 +9,7 @@ export default class Thread extends Component {
 
   // Helpers
   componentWillMount() {
-    axios.get(`/posts/${this.props.id}/comments`).then(res => {
+    axios.get(`/api/posts/${this.props.id}/comments`).then(res => {
       this.setState({ comments: res.data})
     })
   }

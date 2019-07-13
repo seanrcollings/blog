@@ -13,7 +13,7 @@ export default function AuthorBox(props) {
   }, [])
 
   const openLink = () => {
-    history.push(`/author/${props.id}`)
+    history.push(`/authors/${props.id}`)
   }
 
 

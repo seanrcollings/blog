@@ -4,7 +4,7 @@ import history from '../history'
 export default function AuthorLink(props) {
   
   const openAuthor = () => {
-    history.push(`/author/${props.author.id}`)
+    history.push(`/authors/${props.author.id}`)
   }
   
   const {email, username, id} = {...props.author}

@@ -8,7 +8,7 @@ export default class NewPost extends Component {
     event.preventDefault()
     const data = new FormData(event.target)
 
-    axios.post('/posts', {
+    axios.post('/api/posts', {
       post: {
         title: data.get('title'),
         subtitle: data.get('subtitle'),

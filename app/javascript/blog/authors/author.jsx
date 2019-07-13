@@ -17,7 +17,7 @@ export default class Author extends Component {
   
   // Helpers
   async componentWillMount() {
-    await axios.get(`/authors/${this.props.match.params.id}`)
+    await axios.get(`/api/authors/${this.props.match.params.id}`)
       .then(res => {
         this.setState({author: res.data.author, avatar: res.data.avatar, loaded: true})
       })

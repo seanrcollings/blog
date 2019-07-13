@@ -14,7 +14,7 @@ export default class Authors extends Component {
   
   // Helpers
   componentWillMount() {
-    axios.get('/authors/all')
+    axios.get('/api/authors')
       .then(res => {
         this.setState({authors: res.data})
       })

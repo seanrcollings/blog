@@ -16,7 +16,7 @@ export default class Home extends Component {
 
   // Helpers
   async componentDidMount() {
-    await axios.get('/authors/all').then(res => {
+    await axios.get('/api/authors').then(res => {
       this.setState({ authors: res.data, loaded: true})
     })
   } 
