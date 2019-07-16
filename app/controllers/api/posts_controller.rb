@@ -1,21 +1,24 @@
 module Api
   class PostsController < ApplicationController
     def index
-      posts = []
-      Post.order(created_at: :desc).each do |post|
-        posts.push({author: post.user, post: post})
-      end
-      render json: posts
+      posts = Post.all.order(created_at: :desc)
+      post_response = {posts: posts}
+      render json: post_response
     end
   
     def show
       post = Post.find(params[:id])
-      render json: post
+      post_response = { post: post }
+      if params[:include] == "author"
+        post_response[:author] = post.user.as_json
+        post_response[:author][:avatar_url] = post.user.avatar.attached? ? url_for(post.user.avatar) : ""
+      end
+      render json: post_response
     end
-  
-    def show_comments
-      comments = Comment.all.where(post_id: params[:post_id], parent_comment_id: nil).order(created_at: :desc)
-      render json: comments
+
+    def sort      
+      scope = params[:author] == 'all' ? Post.all.time(params[:time]) : Post.authored_by(params[:author]).time(params[:time])
+      render json: scope
     end
     
     def create

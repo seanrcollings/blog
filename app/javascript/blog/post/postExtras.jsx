@@ -11,10 +11,10 @@ export default function PostExtras(props) {
     let content;
     switch (extra) {
       case 'thread':
-        content = <Thread id={props.id}/>
+        content = <Thread postId={props.postId}/>
         break;
       case 'posts':
-        content = <OtherPosts/>
+        content = <OtherPosts authorId={props.authorId}/>
         break; 
       default:
         content = 'default'
@@ -27,8 +27,8 @@ export default function PostExtras(props) {
   return (
     <div className='post-extras'>
       <div className='post-extras-header'>
-        <div className='post-extras-header-item' onClick={() => setExtra('posts')}>Other Posts</div>
-        <div className='post-extras-header-item' onClick={() => setExtra('thread')}>Comments</div>
+        <div className={`post-extras-header-item ${extra === 'posts'  ? 'post-extras-header-item-selected' : ''}`} onClick={() => setExtra('posts')}>Other Posts</div>
+        <div className={`post-extras-header-item ${extra === 'thread' ? 'post-extras-header-item-selected' : ''}`} onClick={() => setExtra('thread')}>Comments</div>
       </div>
       <div className='post-extras-content'>
         {renderContent()}

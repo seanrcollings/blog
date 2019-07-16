@@ -17,7 +17,7 @@ export default class NewPost extends Component {
       }
     })
     .then(res => {
-      history.push(`/post/${res.data.id}`)
+      history.push(`/posts/${res.data.id}`)
     })
   }
 

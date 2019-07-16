@@ -12,9 +12,13 @@ module Api
     end
 
     def posts
-      puts params
       posts = User.find(params[:author_id]).posts.order(created_at: :desc)
-      render json: posts
+      user_response = { posts: posts }
+      if params[:include] == 'avatar' 
+        author = User.find(params[:author_id])
+        user_response[:avatar] = author.avatar.attached? ? url_for(author.avatar) : ""
+      end     
+      render json: user_response
     end
   end
 end

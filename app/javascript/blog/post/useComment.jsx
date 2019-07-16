@@ -8,18 +8,22 @@ export default function UseComment(props) {
   const [username, setUsername] = useState('Loading...')
   const [showReply, setShowReply] = useState(false)
 
-
-  useEffect(() => {
-    axios.get(`/user/${props.user_id}/avatar`) 
+  // Helpers
+  useEffect(() => { 
+    axios.get(`/api/user/${props.user_id}/?include=avatar`)
       .then(res => {
-        setAvatar(res.data)
-      })
-    axios.get(`/user/${props.user_id}`)
-      .then(res => {
-        setUsername(res.data.username) 
+        setAvatar(res.data.avatar) 
+        setUsername(res.data.user.username)
       })
   }, [])
 
+  const deleteComment = () => {
+    axios.delete(`/api/comments/${props.id}`).then(res => {
+      location.reload()
+    })
+  }
+
+  // Renderers
   const renderReply = () => {
     if(showReply) {
       return (
@@ -45,6 +49,7 @@ export default function UseComment(props) {
       <div className='comment-action comment-reply-show' onClick={() => setShowReply(!showReply)}>Reply</div>
       {renderReply()}
       {props.reply ? '' : <div className='comment-action comment-replies-show' onClick={props.toggleHeight}>{props.renderReplyToggle()}</div>}
+      <div className='comment-action comment-destroy' onClick={deleteComment}>Delete Comment</div>
     </div>
   )
 }

@@ -6,7 +6,7 @@ export default function AuthorBox(props) {
   const [avatar, setAvatar] = useState('/assets/default.png') 
   
   useEffect(() => {
-    axios.get(`/user/${props.id}/avatar`)
+    axios.get(`/api/user/${props.id}/avatar`)
       .then(res => {
         setAvatar(res.data)
       })

@@ -3,30 +3,35 @@ import axios from 'axios';
 
 import Comment from './comment';
 import MakeComment from './makeComment';
+import Spinner from '../spinner';
 
 export default class Thread extends Component {
-  state = { comments: [] }
+  state = { comments: null, loading: true }
 
   // Helpers
   componentWillMount() {
-    axios.get(`/api/posts/${this.props.id}/comments`).then(res => {
-      this.setState({ comments: res.data})
+    axios.get(`/api/comments/${this.props.postId}`).then(res => {
+      this.setState({ comments: res.data, loading: false})
     })
   }
 
   // Renderers
   renderComments = () => {
     return this.state.comments.map((comment, index) => {
-      return <Comment {...comment} key={index} postId={this.props.id}/>
+      return <Comment {...comment} key={index} postId={this.props.postId}/>
     })
   }
 
-  render() {
-    return (
-      <div className='thread'>
-        <MakeComment reply={false} postId={this.props.id}/>
-        {this.renderComments()}
-      </div>
-    )
+  render() {      
+    if (this.state.loading) {
+      return <Spinner/>
+    } else {
+      return (
+        <div className='thread'>
+          <MakeComment reply={false} postId={this.props.postId}/>
+          {this.renderComments()}
+        </div>
+      )
+    }
   }
 }

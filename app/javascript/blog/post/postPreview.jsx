@@ -14,7 +14,7 @@ export default class PostPreview extends Component {
   }
 
   openPost = () => {
-    history.push(`/post/${this.props.id}`)
+    history.push(`/posts/${this.props.id}`)
   }
 
   render() {

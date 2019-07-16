@@ -12,14 +12,9 @@ Rails.application.routes.draw do
     get '/:id', to: 'main#index'
   end
 
-  get '/comments/:id/replies', to: 'comments#show_replies'
-  post '/comments', to: 'comments#create'
-
-  get '/user/:id/avatar', to: 'user#avatar_url'
-  get '/user/:id', to: 'user#show'
-
-  get '/post', to: 'main#index'
-  get '/post/:id', to: 'main#index'
+  get '/posts', to: 'main#index'
+  get '/new-post', to: 'main#index'
+  get '/posts/:id', to: 'main#index'
   
   get '/login', to: 'main#index'
   get '/signup', to: 'main#index'
@@ -30,9 +25,15 @@ Rails.application.routes.draw do
     end
     
     resources :posts, only: [:index, :create, :new, :show, :destroy, :update] do
-      get 'comments', to: 'posts#show_comments'
+      get 'sort', to: 'posts#sort'
+    end
+    
+    resources :comments do
+      get 'replies', to: 'comments#show_replies'
+    end
+    
+    resources :user do
+      get 'avatar', to: 'user#avatar_url'
     end
   end
-
-  
 end

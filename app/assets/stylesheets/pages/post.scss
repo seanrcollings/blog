@@ -83,6 +83,8 @@
         color: grey;
         padding: 10px 5px;
 
+        &-selected { color: white; }
+
         &:hover {
           color: white;
           cursor: pointer;

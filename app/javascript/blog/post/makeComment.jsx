@@ -7,7 +7,7 @@ export default class MakeComment extends Component {
     
     e.preventDefault()
     const data = new FormData(e.target)
-    axios.post('/comments', {comment : {
+    axios.post('/api/comments', {comment : {
       content: this.props.reply ? this.props.parentCommentUser + ', ' + data.get('content'): data.get('content'),
       post_id: this.props.postId,
       user_id: gon.user.id,

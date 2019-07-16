@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <Switch>
         <PageLayout>
           <Route path='/' exact component={Home}/>
-          <Route path='/post' exact component={NewPost}/> 
-          <Route path='/post/:id' component={Post}/>
+          <Route path='/new-post' exact component={NewPost}/> 
+          <Route path='/posts/:id' component={Post}/>
           <Route path='/login' component={Login}/>
           <Route path='/signup' component={SignUp}/>
           <Route path='/authors/:id' component={Author}/>

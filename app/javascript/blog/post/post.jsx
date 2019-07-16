@@ -10,28 +10,18 @@ export default class Post extends Component {
     super(props)
 
     this.state = {
-      title: null,
-      subtitle: null,
-      content: null,
-      id: null,
-      user_id: null,
-      authorData: {},
-      comments: [],
+      post: null,
+      author: null,
       editing: false,
-      extra: 'thread'
+      extra: 'thread',
+      loading: true
     }
   }
 
   // Helpers
   componentWillMount() {
-    axios.get(`/api/posts/${this.props.match.params.id}`).then(res => {
-      this.setState({...res.data}, () => {this.fetchUser()})
-    })
-  }
-
-  fetchUser() {
-    axios.get(`/api/authors/${this.state.user_id}`).then(res => {
-      this.setState({authorData: res.data})
+    axios.get(`/api/posts/${this.props.match.params.id}/?include=author`).then(res => {
+      this.setState({loading: false, post: res.data.post, author: res.data.author})
     })
   }
 
@@ -67,10 +57,6 @@ export default class Post extends Component {
     }
   }
 
-  handleScroll = () => {
-    console.log('hi')
-  }
-
   // Renderers
   renderPost = () => {
     if (this.state.editing){
@@ -78,45 +64,39 @@ export default class Post extends Component {
         <div className='post'>
           { this.renderAdminControls() }
           <form className='post-edit'>
-            <input id='title' className='post-edit-input' type='text' name='title' placeholder='Post Title' defaultValue={this.state.title} required/><br/>
-            <input id='subtitle' className='post-edit-input' type='text' name='subtitle' placeholder='Post Subtitle' defaultValue={this.state.subtitle} required/><br/>
-            <textarea id='content' className='post-edit-content' type='text' name='content' placeholder='Blog Post' defaultValue={this.state.content} required/><br/>
+            <input id='title' className='post-edit-input' type='text' name='title' placeholder='Post Title' defaultValue={this.state.post.title} required/><br/>
+            <input id='subtitle' className='post-edit-input' type='text' name='subtitle' placeholder='Post Subtitle' defaultValue={this.state.post.subtitle} required/><br/>
+            <textarea id='content' className='post-edit-content' type='text' name='content' placeholder='Blog Post' defaultValue={this.state.post.content} required/><br/>
           </form>
         </div>
       )
     }
     else {
-      if (this.state.title !== null) {
-        return (
-          <div className='post'>
-            { this.renderAdminControls() }
-            <div className='post-author'>
-              <AuthorLink author={this.state.authorData.author} avatar={this.state.authorData.avatar} className={'post-author-link'}/>
-            </div>
-            <h2>{this.state.title}</h2>
-            <h4>{this.state.subtitle}</h4>
-            { this.renderContent() }
-            <a className='post-close' href='/'>Close Post</a>
-            <PostExtras extra={this.state.extra} comments={this.state.comments} id={this.state.id}/>
+      return (
+        <div className='post'>
+          { this.renderAdminControls() }
+          <div className='post-author'>
+            <AuthorLink author={this.state.author} avatar={this.state.author.avatar_url} className={'post-author-link'}/>
           </div>
-        )
-      } else {
-        return(<Spinner/>)
-      }
-    }
+          <h2>{this.state.post.title}</h2>
+          <h4>{this.state.post.subtitle}</h4>
+          { this.renderContent() }
+          <a className='post-close' href='/'>Close Post</a>            
+          <PostExtras extra={this.state.extra} postId={this.state.post.id} authorId={this.state.author.id}/>
+        </div>
+      )
+    } 
   }
 
   renderContent = () => {
-    if (this.state.content !== null) {
-      const splitContent = this.state.content.split(/\r?\n/)
-      return splitContent.map((paragraph, index) => {
-        if (paragraph.length >= 1) {
-          return <p key={index}>{paragraph}</p>
-        } else {
-          return <br key={index}/>
-        }
-      })
-    }
+    const splitContent = this.state.post.content.split(/\r?\n/)
+    return splitContent.map((paragraph, index) => {
+      if (paragraph.length >= 1) {
+        return <p key={index}>{paragraph}</p>
+      } else {
+        return <br key={index}/>
+      }
+    })
   }
 
   renderAdminControls = () => {
@@ -142,10 +122,14 @@ export default class Post extends Component {
   }
 
   render() {
-    return (
-      <div className='post-grid'>
-        { this.renderPost() }
-      </div>
-    )
+    if(this.state.loading) {
+      return <Spinner/>
+    } else {
+      return (
+        <div className='post-grid'>
+          { this.renderPost() }
+        </div>
+      )
+    }
   }
 }
