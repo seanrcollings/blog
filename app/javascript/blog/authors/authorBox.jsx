@@ -27,7 +27,7 @@ export default function AuthorBox(props) {
         <img className='author-box-img' src={avatar}/>
       </div>
       <div className='author-box-email'>{props.email}</div>
-      <p className="author-box-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+      <p className="author-box-bio">{props.bio}</p>
     </div>
   )
 }

@@ -1,15 +1,23 @@
 @import '../mixins.scss';
 
 .signUp {
-  @include auth-page;
+  @include auth-page(400px);
 
   &-input {
     width: 200px;
-    border: 1px solid white;
+    border: none;
     border-radius: 15px;
+    padding: 3px;
     text-align: center;
     font-size: 20px;
     margin: 10px;
+    transition: all .3s ease;
+    
+    &:focus {
+      color: white;
+      outline: none;
+      background-color: rgba(0, 0, 0, 0.521);
+    }
   }
 
   &-button {
@@ -25,6 +33,22 @@
       cursor: pointer;
       background-color: $button-blue-hover;
       color: rgb(184, 184, 184);
+    }
+  }
+
+  &-bio {
+    width: 80%;
+    border-radius: 15px;
+    padding: 10px;
+    border: none;
+    transition: all .3s ease;
+    height: 120px;
+    margin-bottom: 10px;
+    
+    &:focus {
+      color: white;
+      outline: none;
+      background-color: rgba(0, 0, 0, 0.521);
     }
   }
 }

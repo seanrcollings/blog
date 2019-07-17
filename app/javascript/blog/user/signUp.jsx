@@ -23,6 +23,7 @@ export default class SignUp extends Component {
         email: document.getElementById('email').value,
         password: document.getElementById('password').value,
         password_confirmation: document.getElementById('password_confirmation').value,
+        bio: document.getElementById('bio').value,
         avatar: this.state.avatarId
       }
     })
@@ -50,6 +51,7 @@ export default class SignUp extends Component {
             <input className='signUp-input' id="password" type='password' placeholder="Password"/>
             <input className='signUp-input' id="password_confirmation" type='password' placeholder="Retype Password"/>
           </div>
+          <textarea className='signUp-bio' id='bio' placeholder='User Bio'/>
           <ActiveStorageUploader 
             text='Upload Avatar'
             handleAttachement={(signedIds) => this.setState({avatarId: signedIds[0]})}

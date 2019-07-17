@@ -10,12 +10,10 @@ export default class PostsContainer extends Component {
   }
 
   async componentDidMount() {  
-    let posts, avatar;
     await axios.get(`/api/authors/${this.props.author.id}/posts/?include=avatar`)
       .then(res => {
         this.setState({posts: res.data.posts, avatar: res.data.avatar})
-      })
-    
+      }) 
   }
 
   // Renderers

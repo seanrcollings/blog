@@ -32,8 +32,11 @@
 
     &:hover {
       background-color: $button-blue-hover;
-      cursor: pointer;
-      
+      cursor: pointer; 
     }
+  }
+
+  &-info {
+    color: grey;
   }
 }
