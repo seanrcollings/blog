@@ -35,7 +35,7 @@ export default class SignUp extends Component {
         location.reload()
       })
       .catch(error => {
-        this.setState({ error: '400 (Bad Request) 400 (Bad Request) 400 (Bad Request)', renderError: true })
+        this.setState({ error: 'Sign up failed, please try again later', renderError: true })
       })
   }
 
