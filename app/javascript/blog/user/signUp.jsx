@@ -4,6 +4,7 @@ import history from '../history';
 
 import ActiveStorageUploader from './activeStorage';
 import AvatarModal from './avatarModal';
+import ErrorBox from '../errorBox';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -11,7 +12,9 @@ export default class SignUp extends Component {
 
     this.state = {
       avatarId: null,
-      avatar: null
+      avatar: null,
+      error: null,
+      renderError: false
     }
   }
 
@@ -28,10 +31,11 @@ export default class SignUp extends Component {
       }
     })
       .then(res => {
-        if (res.status === 200) {
-          history.push('/login')
-          location.reload()
-        }
+        history.push('/login')
+        location.reload()
+      })
+      .catch(error => {
+        this.setState({ error: '400 (Bad Request) 400 (Bad Request) 400 (Bad Request)', renderError: true })
       })
   }
 
@@ -59,6 +63,7 @@ export default class SignUp extends Component {
           {/* <input type='file' onChange={this.handleChange}/> */}
           <input type='submit' className='signUp-button' value='Submit'/>
         </form>
+        <ErrorBox error={this.state.error} render={this.state.renderError}/>
         {/* <AvatarModal avatar={this.state.avatar}/> */}
       </div>
     )

@@ -1,7 +1,7 @@
 module Api
   class AuthorsController < ApplicationController
     def index
-      authors = User.all.where(author: true)
+      authors = User.where(author: true).order(id: :asc)
       render json: authors
     end
 

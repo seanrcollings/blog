@@ -15,6 +15,10 @@ export default class Thread extends Component {
     })
   }
 
+  addNewComment = (newComment) => {
+    this.setState({comments:  [newComment, ...this.state.comments]})
+  }
+
   // Renderers
   renderComments = () => {
     return this.state.comments.map((comment, index) => {
@@ -28,7 +32,7 @@ export default class Thread extends Component {
     } else {
       return (
         <div className='thread'>
-          <MakeComment reply={false} postId={this.props.postId}/>
+          <MakeComment reply={false} postId={this.props.postId} addNewComment={this.addNewComment}/>
           {this.renderComments()}
         </div>
       )

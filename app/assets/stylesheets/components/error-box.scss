@@ -1,0 +1,63 @@
+.error-box {
+  position: fixed;
+  bottom: 0;
+  left: 12.5%;
+  width: 70%;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 18px;
+  margin: 10px auto;
+  background-color: rgb(167, 32, 32);
+  padding: 10px;
+  border-radius: 15px;
+  animation: slide-in 700ms ease-out;
+
+  &-text { font-weight: bold; }
+
+  &-error { 
+    font-weight: normal; 
+    overflow: hidden; 
+    width: 350px;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    text-overflow: ellipsis;
+    margin-left: 10px; 
+  }
+
+  &-close {
+    display: flex;
+    font-weight: bold;
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+    background-color: white;
+    border-radius: 50%;
+    color: black;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(226, 220, 220)
+    }
+  }
+
+  &-hide {
+  animation: slide-out 700ms linear;
+  animation-fill-mode: forwards;
+  }
+}
+
+@keyframes slide-in {
+  0% {transform: translateY(100px)}
+  50% {transform: translateY(-30px)}
+  100% {transform: translateY(0px)}
+}
+
+@keyframes slide-out {
+  0% {transform: translateY(0px)}
+  50% {transform: translateY(-30px)}
+  100% {transform: translateY(100px); display: none;}
+}

@@ -16,12 +16,14 @@ import SignUp from '../blog/user/signUp';
 import PageLayout from '../blog/pageLayous';
 import Authors from '../blog/authors/authors';
 import Author from '../blog/authors/author';
+import LandingPage from '../blog/landingPage';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
 		<Router history={history}>
       <Switch>
         <PageLayout>
+          {/* <Route path='/' exact component={LandingPage}/> */}
           <Route path='/' exact component={Home}/>
           <Route path='/new-post' exact component={NewPost}/> 
           <Route path='/posts/:id' component={Post}/>

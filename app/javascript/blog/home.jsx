@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Feed from './feed/feed';
 import Spinner from './spinner';
+import ErrorBox from './errorBox';
 
 export default class Home extends Component {
   constructor(props) {

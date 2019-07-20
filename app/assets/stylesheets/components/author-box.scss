@@ -18,16 +18,16 @@
   &-img {
     width: 180px;
     height: 180px;
-
-    &-container {
-      display: flex;
-      border: 5px solid white;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      overflow: hidden;
-    }
+    object-fit: cover;
+    
+  &-container {
+    width: 180px;
+    height: 180px;
+    border: 5px solid white;
+    border-radius: 50%;
+    overflow: hidden;
   }
+}
 
   &-bio {
     text-align: center;

@@ -6,7 +6,7 @@ module Api
     end
     
     def show
-      comments = Comment.all.where(post_id: params[:id], parent_comment_id: nil).order(created_at: :desc).as_json
+      comments = Comment.where(post_id: params[:id], parent_comment_id: nil).order(created_at: :desc).as_json
       render json: comments
     end
 
@@ -27,8 +27,10 @@ module Api
     end
 
     def destroy
-      puts params
       comment = Comment.find(params[:id])
+      comment.comments.each do |reply|
+        reply.destroy
+      end
       comment.destroy
       head :ok
     end

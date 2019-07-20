@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import history from '../history'
+import ErrorBox from '../errorBox';
 
 export default class Login extends Component {
+  state = {
+    error: null,
+    renderError: false
+  }
+
   submit = (e) => {
     e.preventDefault()
 
@@ -11,11 +17,12 @@ export default class Login extends Component {
       password: document.getElementById('password').value,
     }})
       .then(res => {
+        console.log(res)
         if (res.status === 200){
           history.push('/')
           location.reload()
         } else {
-          window.alert('Something went wrong')
+          this.setState({ renderError: true, error: res.data.errors})
         }
       })
   }
@@ -35,7 +42,8 @@ export default class Login extends Component {
           <input id='password' className='login-input' type="password" name="password" placeholder='Password'/>
           <input type='submit' className='login-button' value='Submit'/>
         </form>
-        <p> <a href='/signup'> Don't have an account? Sign Up Here!</a></p>
+        <p> <a href='/signup'>Don't have an account? Sign Up Here!</a></p>
+        <ErrorBox error={this.state.error} render={this.state.renderError}/>
       </div>
     )
   }

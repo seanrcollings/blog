@@ -14,7 +14,11 @@ export default class MakeComment extends Component {
       parent_comment_id: this.props.reply ? this.props.parentCommentId : null 
     }})
       .then(res => {
-        location.reload()
+        if (res.status === 200) {
+          this.props.addNewComment(res.data)
+        } else {
+          window.alert('Something Went Wrong')
+        }
       })
   }
   

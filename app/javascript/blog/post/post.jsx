@@ -34,14 +34,14 @@ export default class Post extends Component {
 
   editPost = event => {
     event.preventDefault()
-    axios.put(`/api/posts/${this.state.id}`, { post: {
+    axios.put(`/api/posts/${this.state.post.id}`, { post: {
       title: document.getElementById('title').value,
       subtitle: document.getElementById('subtitle').value,
       content: document.getElementById('content').value,
     }})
     .then(res => {
       if(res.status === 200){ 
-        this.setState({ ...res.data})
+        this.setState({ post: res.data})
         this.swapMode()
       } else {
         window.alert('Something went wrong! ')
