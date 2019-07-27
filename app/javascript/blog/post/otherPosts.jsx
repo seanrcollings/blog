@@ -17,15 +17,11 @@ export default class OtherPosts extends Component {
   componentDidMount = () => { this.sort() } 
 
   setAuthor = (e) => { 
-    this.setState({ author: e.target.data }, () => {
-      this.sort()
-    })
+    this.setState({ author: e.target.value }, () => { this.sort() })
   }
 
   setTime = (e) => { 
-    this.setState({ time: e.target.data }, () => {
-      this.sort()
-    })
+    this.setState({ time: e.target.value }, () => { this.sort() })
   }
 
   sort = () => {
@@ -54,7 +50,7 @@ export default class OtherPosts extends Component {
     return (
       <div className='other-posts'>
         <div className='other-posts-form'>
-          <div>Sort By</div>
+          <span>Sort By</span>
           <select className='other-posts-select' value={this.state.author} onChange={this.setAuthor}>
             <option className='other-posts-option' value={this.props.authorId}>This Author</option>
             <option value="all">All Authors</option>

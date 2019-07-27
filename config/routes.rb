@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     get '/:id', to: 'main#index'
   end
 
+  scope :users do
+    get '*path', to: 'main#index'
+  end
+
   get '/posts', to: 'main#index'
   get '/new-post', to: 'main#index'
   get '/posts/:id', to: 'main#index'

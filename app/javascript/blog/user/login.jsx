@@ -17,7 +17,6 @@ export default class Login extends Component {
       password: document.getElementById('password').value,
     }})
       .then(res => {
-        console.log(res)
         if (res.status === 200){
           history.push('/')
           location.reload()

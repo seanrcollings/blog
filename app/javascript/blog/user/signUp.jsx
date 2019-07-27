@@ -31,8 +31,14 @@ export default class SignUp extends Component {
       }
     })
       .then(res => {
-        history.push('/login')
-        location.reload()
+        axios.post('/users/sign_in', {user: {
+          email: document.getElementById('email').value,
+          password: document.getElementById('password').value,
+        }})
+          .then(res => {
+            history.push('/')
+            location.reload()
+          })
       })
       .catch(error => {
         this.setState({ error: 'Sign up failed, please try again later', renderError: true })
