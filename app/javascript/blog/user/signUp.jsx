@@ -54,14 +54,14 @@ export default class SignUp extends Component {
       <div className='signUp'>
         <form className='signUp-form' onSubmit={this.submit}>
           <div className='signUp-input-wrapper'>
-            <input className='signUp-input' id="email" placeholder="Email"/>
-            <input className='signUp-input' id="username" placeholder="Username"/>
+            <input className='signUp-input' id="email" placeholder="Email" required/>
+            <input className='signUp-input' id="username" placeholder="Username" required/>
           </div>
           <div className='signUp-input-wrapper'>
-            <input className='signUp-input' id="password" type='password' placeholder="Password"/>
-            <input className='signUp-input' id="password_confirmation" type='password' placeholder="Retype Password"/>
+            <input className='signUp-input' id="password" type='password' placeholder="Password" required/>
+            <input className='signUp-input' id="password_confirmation" type='password' placeholder="Retype Password" required/>
           </div>
-          <textarea className='signUp-bio' id='bio' placeholder='User Bio'/>
+          <textarea className='signUp-bio' id='bio' placeholder='User Bio' required/>
           <ActiveStorageUploader 
             text='Upload Avatar'
             handleAttachement={(signedIds) => this.setState({avatarId: signedIds[0]})}

@@ -13,7 +13,7 @@ export default class ActiveStorageUploader extends Component {
                   type="file"
                   disabled={!ready}
                   onChange={e => handleUpload(e.currentTarget.files)}
-                  // required
+                  required
                 />
                 {uploads.map(upload => {
                   switch (upload.state) {

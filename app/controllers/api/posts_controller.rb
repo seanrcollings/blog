@@ -24,7 +24,7 @@ module Api
     def create
       if current_user.author?
         post = Post.new(create_post_params)
-  
+        
         if post.save
           render json: post
         else

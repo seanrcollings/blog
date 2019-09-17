@@ -19,7 +19,7 @@ export default class Login extends Component {
       .then(res => {
         if (res.status === 200){
           history.push('/')
-          location.reload()
+          location.reload()          
         } else {
           this.setState({ renderError: true, error: res.data.errors})
         }
